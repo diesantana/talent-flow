@@ -6,6 +6,13 @@
     <div class="bg-white p-8 rounded-xl shadow-lg">
         <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Acessar o Banco de talentos</h2>
 
+        {{-- Feedback--}}
+        @if (session('status'))
+            <div class="mb-6 p-3 bg-green-50 border border-green-200 text-green-800 rounded-lg text-sm text-center">
+                {{ __(session('status')) }}
+            </div>
+        @endif
+
         @if ($errors->any())
             <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
                 {{ $errors->first() }}
