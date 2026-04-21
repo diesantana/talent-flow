@@ -73,7 +73,14 @@ return [
     |
     */
 
-    'home' => '/home',
+    'home' => '/candidates',
+
+    /**
+     * Redireciona para a tela de login apos logout
+     */
+    'redirects' => [
+        'logout' => '/login',
+    ],
 
     /*
     |--------------------------------------------------------------------------
