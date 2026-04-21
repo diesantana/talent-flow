@@ -30,10 +30,27 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class); // Alterar senha
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class); // recuperar senha
 
+
+        // Definir o limite de tentativas de login (5 tentativas por minuto por IP e usuario)
         RateLimiter::for('login', function (Request $request) {
-            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
+            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())) . '|' . $request->ip());
 
             return Limit::perMinute(5)->by($throttleKey);
+        });
+
+        // view de login
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        // view de esqueci minha senha
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.forgot-password');
+        });
+
+        // view de resetar a senha
+        Fortify::resetPasswordView(function ($request) {
+            return view('auth.reset-password', ['request' => $request]);
         });
     }
 }
