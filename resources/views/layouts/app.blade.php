@@ -28,10 +28,13 @@
                 <nav class="flex items-center gap-4 text-sm font-medium">
                     <a href="#" class="text-gray-900 hover:text-indigo-900 transition">Candidatos</a>
                     <a href="#" class="text-gray-900 hover:text-indigo-900 transition">Perfil</a>
-                    <button
-                        class="cursor-pointer bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded-lg">
-                        Sair
-                    </button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="cursor-pointer bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded-lg">
+                            Sair
+                        </button>
+                    </form>
                 </nav>
             </div>
         </div>
