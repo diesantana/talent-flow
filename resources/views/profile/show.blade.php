@@ -36,9 +36,9 @@
             <h2 class="text-lg font-semibold text-gray-900 mb-4">Alterar senha</h2>
 
             {{-- Feedback --}}
-            @if (session('status'))
+            @if (session('status') === 'password-updated')
                 <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm">
-                    {{ session('status') }}
+                    Senha alterada com sucesso!
                 </div>
             @endif
 
